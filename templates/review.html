@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block page_title %}
+review
+{% endblock page_title %}
+
+{% block content %}
+<div class="flex justify-center mt-8">
+  <form method="POST" action="{% url "review:review" obj.pk %}" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    {% csrf_token %}
+      {% for field in form %}
+      <div class="mb-5">
+          <label class="block text-gray-700 text-sm font-bold mb-2" for="{{field.auto_id}}">{{field.label}}</label>
+          <div class="shadow appearance-none border rounded w-full  text-gray-700 leading-tight focus:outline-none focus:shadow-outline">
+          {{field}}
+          </div>
+      </div>
+    {% endfor %}
+    <button class="border-2 border-gray-700 italic px-2 py2 border-gray-500 rounded-lg">add view</button>
+</form>
+</div>
+</div>
+{% endblock content %}
